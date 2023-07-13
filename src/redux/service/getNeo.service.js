@@ -3,13 +3,15 @@ import { axiosInstance } from './axiosInstance';
 
 export const fetchNeo = createAsyncThunk(
     'neo/fetchNeoItem',
-    async (dates, thunkAPI) => {
+    async (date, thunkAPI) => {
         try {
-            const response = await axiosInstance.get(
-                `feed?start_date=${dates.firstDayOfMonth}&end_date=${
-                    dates.currentDate
-                }&api_key=${import.meta.env.VITE_API_KEY}`
-            );
+            const response = await axiosInstance.get('feed', {
+                params: {
+                    start_date: date,
+                    end_date: date,
+                    api_key: import.meta.env.VITE_API_KEY,
+                },
+            });
 
             const { data } = response;
 
