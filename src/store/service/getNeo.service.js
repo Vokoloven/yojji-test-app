@@ -11,7 +11,7 @@ export const fetchNeo = createAsyncThunk(
                 }`
             );
 
-            const { data } = response;  
+            const { data } = response;
 
             return data;
         } catch (error) {
