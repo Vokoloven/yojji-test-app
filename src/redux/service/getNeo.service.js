@@ -6,9 +6,9 @@ export const fetchNeo = createAsyncThunk(
     async (dates, thunkAPI) => {
         try {
             const response = await axiosInstance.get(
-                `feed?start_date=${dates}&end_date=${dates}&api_key=${
-                    import.meta.env.VITE_API_KEY
-                }`
+                `feed?start_date=${dates.firstDayOfMonth}&end_date=${
+                    dates.currentDate
+                }&api_key=${import.meta.env.VITE_API_KEY}`
             );
 
             const { data } = response;

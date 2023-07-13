@@ -6,4 +6,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
     base: '/yojji-test-app/',
     plugins: [react(), tsconfigPaths()],
+    resolve: {
+        alias: [{ find: '@', replacement: '/src/' }],
+    },
 });

@@ -22,7 +22,7 @@ export const neoSlice = createSlice({
         });
         builder.addCase(fetchNeo.rejected, (state, { payload }) => {
             state.loading = 'failed';
-            state.errorMessage = payload.message;
+            state.errorMessage = payload.error_message;
         });
     },
 });
