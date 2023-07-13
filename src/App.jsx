@@ -6,7 +6,9 @@ import { useFetchData } from '@/hooks/useFetchData';
 
 export const App = () => {
     useFonts();
-    useFetchData();
+    const data = useFetchData();
+
+    console.log(data);
 
     return (
         <>

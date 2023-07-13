@@ -6,8 +6,8 @@ const initialValue = {
 };
 
 export const handleAggregatedData = (neo, date) => {
-    if (neo && date) {
-        const data = neo[date]?.reduce(
+    if (date) {
+        const data = neo.near_earth_objects[date]?.reduce(
             (accumulator, currentValue) => ({
                 estimated_diameter_max:
                     accumulator.estimated_diameter_max +
@@ -38,6 +38,7 @@ export const handleAggregatedData = (neo, date) => {
             }),
             initialValue
         );
+
         return data;
     }
 };
