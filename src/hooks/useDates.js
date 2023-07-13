@@ -10,7 +10,7 @@ export const useDate = () => {
     useEffect(() => {
         const id = setInterval(() => {
             setCount((prevState) => (prevState > today ? 1 : prevState + 1));
-        }, 5000000);
+        }, 50000000);
         return () => {
             clearInterval(id);
         };

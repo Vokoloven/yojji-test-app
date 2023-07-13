@@ -3,6 +3,7 @@ const initialValue = {
     is_potentially_hazardous_asteroid: 0,
     miss_distance: 0,
     relative_velocity: 0,
+    id: 0,
 };
 
 export const handleAggregatedData = (neo, date) => {
@@ -35,6 +36,8 @@ export const handleAggregatedData = (neo, date) => {
                         currentValue.close_approach_data[0].relative_velocity
                             .kilometers_per_hour
                     ),
+
+                id: currentValue.id,
             }),
             initialValue
         );

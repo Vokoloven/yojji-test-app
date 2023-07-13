@@ -1,21 +1,27 @@
-import { useFonts } from './hooks';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Routes, Route } from 'react-router-dom';
-import CustomAppBar from './components/AppBar';
-import { useFetchData } from '@/hooks/useFetchData';
+import { Suspense, lazy } from 'react';
+import { useFonts } from '@/hooks';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Box, Container } from '@mui/material';
+
+const CustomAppBar = lazy(() => import('@/components/AppBar'));
+const Home = lazy(() => import('@/pages/Home'));
 
 export const App = () => {
     useFonts();
-    const data = useFetchData();
-
-    console.log(data);
 
     return (
         <>
             <CssBaseline />
-            <Routes>
-                <Route path={'/'} element={<CustomAppBar />} />
-            </Routes>
+            <Suspense fallback={<Box>Loading...</Box>}>
+                <Container maxWidth={'xl'}>
+                    <Routes>
+                        <Route path={'/'} element={<CustomAppBar />}>
+                            <Route index element={<Home />} />
+                        </Route>
+                    </Routes>
+                </Container>
+            </Suspense>
         </>
     );
 };
