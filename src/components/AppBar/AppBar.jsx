@@ -9,7 +9,7 @@ import { purple } from '@mui/material/colors';
 
 export default function CustomAppBar() {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box as={'header'} sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ bgcolor: purple[500] }}>
                 <Toolbar>
                     <IconButton
