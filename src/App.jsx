@@ -11,7 +11,7 @@ import { useDate } from '@/hooks';
 export const App = () => {
     // const dispatch = useDispatch();
     useFonts();
-    useDate();
+    console.log(useDate());
 
     // useEffect(() => {
     //     dispatch(fetchNeo({ firstDayOfMonth, currentDate }));
