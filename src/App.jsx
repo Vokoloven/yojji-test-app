@@ -7,6 +7,7 @@ export const App = () => {
     return (
         <>
             <CssBaseline />
+            <div>Here we go</div>
         </>
     );
 };
