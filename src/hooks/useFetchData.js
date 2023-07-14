@@ -14,11 +14,10 @@ export const useFetchData = () => {
     const getData = useCallback(async () => {
         const response = await dispatch(fetchNeo(date));
 
+        const handleData = handleAggregatedData(response.payload, date);
+
         if (response.type === 'neo/fetchNeoItem/fulfilled') {
-            setAggregatedData((prevState) => [
-                handleAggregatedData(response.payload, date),
-                ...prevState,
-            ]);
+            setAggregatedData((prevState) => [handleData, ...prevState]);
         }
     }, [date, dispatch]);
 
@@ -53,5 +52,5 @@ export const useFetchData = () => {
     //     }
     // }, [date, dispatch]);
 
-    return aggregatedData.slice(0, 6);
+    return aggregatedData;
 };

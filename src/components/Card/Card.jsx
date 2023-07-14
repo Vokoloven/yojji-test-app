@@ -19,6 +19,7 @@ export const BasicCard = ({
         <Card
             sx={{
                 minWidth: 275,
+                bgcolor: isHighestValue(sorted, id) && red[200],
             }}
         >
             <CardContent>

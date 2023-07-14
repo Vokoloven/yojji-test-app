@@ -38,6 +38,7 @@ export const handleAggregatedData = (neo, date) => {
                     ),
 
                 id: accumulator.id + Number(currentValue.id),
+                date: date,
             }),
             initialValue
         );
