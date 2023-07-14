@@ -1,6 +1,6 @@
 export const filterByNumHazards = (data) => {
     if (data?.length > 0) {
-        const sorted = data
+        const sorted = [...data]
             .sort(
                 (a, b) =>
                     b.is_potentially_hazardous_asteroid -

@@ -7,6 +7,9 @@ const initialValue = {
 };
 
 export const handleAggregatedData = (neo, date) => {
+    const currentDate = new Date();
+    const getTime = currentDate.getTime();
+
     if (date) {
         const data = neo.near_earth_objects[date]?.reduce(
             (accumulator, currentValue) => ({
@@ -37,8 +40,7 @@ export const handleAggregatedData = (neo, date) => {
                             .kilometers_per_hour
                     ),
 
-                id: accumulator.id + Number(currentValue.id),
-                date: date,
+                id: getTime,
             }),
             initialValue
         );

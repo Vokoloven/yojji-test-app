@@ -4,6 +4,7 @@ import { useFonts } from '@/hooks';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Container } from '@mui/material';
 
+
 const CustomAppBar = lazy(() => import('@/components/AppBar'));
 const Home = lazy(() => import('@/pages/Home'));
 
