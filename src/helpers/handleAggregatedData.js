@@ -37,7 +37,7 @@ export const handleAggregatedData = (neo, date) => {
                             .kilometers_per_hour
                     ),
 
-                id: currentValue.id,
+                id: accumulator.id + Number(currentValue.id),
             }),
             initialValue
         );

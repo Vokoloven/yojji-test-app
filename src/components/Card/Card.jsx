@@ -1,45 +1,41 @@
-import Box from '@mui/material/Box';
+/* eslint-disable react/prop-types */
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import { isHighestValue } from '@/helpers';
 
-const bull = (
-    <Box
-        component="span"
-        sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-        •
-    </Box>
-);
-
-export const BasicCard = () => {
+export const BasicCard = ({
+    item: {
+        estimated_diameter_max,
+        is_potentially_hazardous_asteroid,
+        miss_distance,
+        relative_velocity,
+        id,
+    },
+    sorted,
+}) => {
     return (
-        <Card sx={{ minWidth: 275 }}>
+        <Card
+            sx={{
+                minWidth: 275,
+            }}
+        >
             <CardContent>
-                <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                >
-                    Word of the Day
+                <Typography variat={'body2'}>
+                    Max estimated diameter of NEO:{' '}
+                    {estimated_diameter_max.toFixed(2)} km
                 </Typography>
-                <Typography variant="h5" component="div">
-                    be{bull}nev{bull}o{bull}lent
+                <Typography variat={'body2'}>
+                    Hazardous NEOs per day: {is_potentially_hazardous_asteroid}
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    adjective
+                <Typography variat={'body2'}>
+                    Closest NEO: {miss_distance.toFixed(2)} km
                 </Typography>
-                <Typography variant="body2">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
+                <Typography variat={'body2'}>
+                    Fastest NEO: {relative_velocity.toFixed(2)} kph
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
-            </CardActions>
         </Card>
     );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useDate } from '@/hooks';
 import { fetchNeo } from '@/redux/service';
@@ -11,25 +11,47 @@ export const useFetchData = () => {
     const date = useDate();
     const [aggregatedData, setAggregatedData] = useState([]);
 
-    useEffect(() => {
-        const getDate = async () => {
-            const data = await dispatch(fetchNeo(date));
-            if (data.type === 'neo/fetchNeoItem/fulfilled') {
-                setAggregatedData((prevState) => [
-                    handleAggregatedData(data.payload, date),
-                    ...prevState,
-                ]);
-            }
-        };
+    const getData = useCallback(async () => {
+        const response = await dispatch(fetchNeo(date));
 
+        if (response.type === 'neo/fetchNeoItem/fulfilled') {
+            setAggregatedData((prevState) => [
+                handleAggregatedData(response.payload, date),
+                ...prevState,
+            ]);
+        }
+    }, [date, dispatch]);
+
+    useEffect(() => {
         if (isFirstRender.current) {
             return () => {
                 isFirstRender.current = false;
             };
         } else {
-            getDate();
+            getData();
         }
-    }, [date, dispatch]);
+    }, [getData]);
+
+    // useEffect(() => {
+    //     const getDate = async () => {
+    //         const data = await dispatch(fetchNeo(date));
+    //         if (data.type === 'neo/fetchNeoItem/fulfilled') {
+    //             setAggregatedData((aggregatedData) =>
+    //                 aggregatedData.concat(
+    //                     handleAggregatedData(data.payload, date)
+    //                 )
+    //             );
+    //         }
+    //     };
+
+    //     if (isFirstRender.current) {
+    //         return () => {
+    //             isFirstRender.current = false;
+    //         };
+    //     } else {
+    //         getDate();
+    //     }
+    // }, [date, dispatch]);
 
     return aggregatedData.slice(0, 6);
 };

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { BasicCard } from '@/components/Card';
 
-export const ResponsiveGrid = ({ data }) => {
+export const ResponsiveGrid = ({ data, sorted }) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid
@@ -14,7 +14,7 @@ export const ResponsiveGrid = ({ data }) => {
                 {data?.length > 0 &&
                     data.map((item) => (
                         <Grid item xs={4} sm={4} md={4} key={item.id}>
-                            <BasicCard />
+                            <BasicCard item={item} sorted={sorted} />
                         </Grid>
                     ))}
             </Grid>
