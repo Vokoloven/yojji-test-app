@@ -1,5 +1,5 @@
 import { handleAggregatedData } from './handleAggregatedData';
-import { filterByNumHazards } from './filterByNumHazards';
+import { sortedByNumHazards } from './sortedByNumHazards';
 import { isHighestValue } from './isHighestValue';
 
-export { handleAggregatedData, filterByNumHazards, isHighestValue };
+export { handleAggregatedData, sortedByNumHazards, isHighestValue };

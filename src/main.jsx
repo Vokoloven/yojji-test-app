@@ -7,8 +7,10 @@ import { store } from '@/redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
-        <BrowserRouter basename="yojji-test-app">
-            <App />
-        </BrowserRouter>
+        <StrictMode>
+            <BrowserRouter basename="yojji-test-app">
+                <App />
+            </BrowserRouter>
+        </StrictMode>
     </Provider>
 );

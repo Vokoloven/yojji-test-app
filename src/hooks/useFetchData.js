@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchNeo } from '@/redux/service';
 import { handleAggregatedData } from '@/helpers/';
@@ -9,33 +9,21 @@ export const useFetchData = () => {
     const dispatch = useDispatch();
     const [aggregatedData, setAggregatedData] = useState([]);
 
-    // const getData = useCallback(async () => {
-    //     const response = await dispatch(fetchNeo(date));
+    const getData = useCallback(async () => {
+        const response = await dispatch(fetchNeo(date));
 
-    //     const handleData = handleAggregatedData(response.payload, date);
+        const handleData = handleAggregatedData(response.payload, date);
 
-    //     if (response.type === 'neo/fetchNeoItem/fulfilled') {
-    //         setAggregatedData((prevValue) => [handleData, ...prevValue]);
-    //     }
-    // }, [date, dispatch]);
-
-    // useEffect(() => {
-    //     getData();
-    // }, [getData]);
-
-    useEffect(() => {
-        const getDate = async () => {
-            const data = await dispatch(fetchNeo(date));
-
-            const handleData = handleAggregatedData(data.payload, date);
-
-            setAggregatedData((prevState) => [...prevState, handleData]);
-        };
-
-        getDate();
+        if (response.type === 'neo/fetchNeoItem/fulfilled') {
+            setAggregatedData((prevValue) => [handleData, ...prevValue]);
+        }
     }, [date, dispatch]);
 
-    const test = [...aggregatedData].sort((a, b) => b.id - a.id).slice(0, 6);
+    useEffect(() => {
+        getData();
+    }, [getData]);
 
-    return test;
+    const sorted = [...aggregatedData].sort((a, b) => b.id - a.id).slice(0, 6);
+
+    return sorted;
 };

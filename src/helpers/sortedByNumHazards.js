@@ -1,4 +1,4 @@
-export const filterByNumHazards = (data) => {
+export const sortedByNumHazards = (data) => {
     if (data?.length > 0) {
         const sorted = [...data]
             .sort(
