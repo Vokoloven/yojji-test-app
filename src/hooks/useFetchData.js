@@ -15,6 +15,7 @@ export const useFetchData = () => {
         const response = await dispatch(fetchNeo(date));
 
         const handleData = handleAggregatedData(response.payload, date);
+        console.log(handleData);
 
         if (response.type === 'neo/fetchNeoItem/fulfilled') {
             setAggregatedData((prevState) => [handleData, ...prevState]);
@@ -34,12 +35,13 @@ export const useFetchData = () => {
     // useEffect(() => {
     //     const getDate = async () => {
     //         const data = await dispatch(fetchNeo(date));
+
+    //         const handleData = handleAggregatedData(data.payload, date);
+
+    //         console.log(handleData);
+
     //         if (data.type === 'neo/fetchNeoItem/fulfilled') {
-    //             setAggregatedData((aggregatedData) =>
-    //                 aggregatedData.concat(
-    //                     handleAggregatedData(data.payload, date)
-    //                 )
-    //             );
+    //             setAggregatedData((prevState) => [handleData, ...prevState]);
     //         }
     //     };
 
