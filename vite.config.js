@@ -1,12 +1,9 @@
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import react from '@vitejs/plugin-react';
+import includePaths from 'rollup-plugin-includepaths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
     base: '/yojji-test-app/',
-    plugins: [react(), tsconfigPaths()],
-    resolve: {
-        alias: [{ find: '@', replacement: '/src/' }],
-    },
+    plugins: [react(), includePaths({ paths: ['./src'] })],
 });

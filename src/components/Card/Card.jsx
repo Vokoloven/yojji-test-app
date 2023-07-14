@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import { isHighestValue } from '@/helpers';
+import { isHighestValue } from 'helpers';
 
 export const BasicCard = ({
     item: {

@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchNeo } from '@/redux/service';
-import { handleAggregatedData } from '@/helpers/';
-import { useDate } from '@/hooks';
+import { fetchNeo } from 'redux/service';
+import { handleAggregatedData } from 'helpers/';
+import { useDate } from 'hooks';
 
 export const useFetchData = () => {
     const date = useDate();

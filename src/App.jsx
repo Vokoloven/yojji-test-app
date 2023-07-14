@@ -1,12 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { useFonts } from '@/hooks';
+import { useFonts } from 'hooks';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Box, Container } from '@mui/material';
 
-
-const CustomAppBar = lazy(() => import('@/components/AppBar'));
-const Home = lazy(() => import('@/pages/Home'));
+const CustomAppBar = lazy(() => import('components/AppBar'));
+const Home = lazy(() => import('pages/Home'));
 
 export const App = () => {
     useFonts();

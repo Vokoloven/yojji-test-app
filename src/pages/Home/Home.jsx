@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import { ResponsiveGrid } from '@/components/Grid';
-import { useFetchData } from '@/hooks/useFetchData';
-import { sortedByNumHazards } from '@/helpers/sortedByNumHazards';
+import { ResponsiveGrid } from 'components/Grid';
+import { useFetchData } from 'hooks/useFetchData';
+import { sortedByNumHazards } from 'helpers/sortedByNumHazards';
 
 const Home = () => {
     const data = useFetchData();

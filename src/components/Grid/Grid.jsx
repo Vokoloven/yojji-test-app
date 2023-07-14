@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { BasicCard } from '@/components/Card';
+import { BasicCard } from 'components/Card';
 
 export const ResponsiveGrid = ({ data, sorted }) => {
     return (
